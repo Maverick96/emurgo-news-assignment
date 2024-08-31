@@ -9,7 +9,7 @@ async function fetchHeadLines(max) {
         max,
         lang: 'en'
     };
-    return axios.get(`${BASE_URL}/top-headlines`, params);
+    return axios.get(`${BASE_URL}/top-headlines`, {params});
 }
 
 async function searchArticles(query, searchIn) {
@@ -19,7 +19,7 @@ async function searchArticles(query, searchIn) {
         q: query
     }
     if(searchIn) params['in'] = searchIn;
-    return axios.get(`${BASE_URL}/search`, params);
+    return axios.get(`${BASE_URL}/search`, {params});
 }
 
 
