@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: News Article API
+  description: API for fetching, finding, and searching news articles using GNews
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /fetchArticles:
+    get:
+      summary: Fetch top headlines
+      description: Retrieve a list of top news articles
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Number of articles to fetch (default is 10)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticlesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /findArticle:
+    get:
+      summary: Find article by title
+      description: Find a specific article by its title
+      parameters:
+        - in: query
+          name: title
+          required: true
+          schema:
+            type: string
+          description: Title of the article to find
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticlesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /searchArticle:
+    get:
+      summary: Search articles
+      description: Search for articles based on a keyword
+      parameters:
+        - in: query
+          name: searchBy
+          required: true
+          schema:
+            type: string
+          description: Keyword to search for in articles
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticlesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ArticlesResponse:
+      type: object
+      properties:
+        totalArticles:
+          type: integer
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    Article:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        url:
+          type: string
+        image:
+          type: string
+        publishedAt:
+          type: string
+        source:
+          $ref: '#/components/schemas/Source'
+    Source:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
