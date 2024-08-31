@@ -2,11 +2,7 @@
 A Node.js application that serves news articles using the GNews API.
 # 🚀 Features
 
-Fetch top headlines
-Search articles by keyword
-Find specific articles by title
-Caching mechanism for improved performance
-Swagger documentation for easy API exploration
+Fetch top headlines, Search articles by keyword, Find specific articles by title, Caching mechanism for improved performance, Swagger documentation for easy API exploration
 
 # 🛠️ Installation
 
