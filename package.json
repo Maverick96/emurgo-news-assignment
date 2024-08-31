@@ -1,0 +1,22 @@
+{
+  "name": "emurgo-news-assignment",
+  "author": {
+    "name": "Harsh Pancholi"
+  },
+  "engines": {
+    "node": "18.0.0"
+  },
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.6",
+    "express": "^4.19.2",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
