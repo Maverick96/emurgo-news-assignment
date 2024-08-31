@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const fetchArticles = require('./routes/fetchArticles');
 const findArticle = require('./routes/findArticle');

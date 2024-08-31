@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const BASE_URL = "https://gnews.io/api/v4";
-const API_KEY = "efc155ce6320f4802c753bf7a2811981"; // replace with your API KEY
+const API_KEY = process.env.GNEWS_API_KEY; // replace with your API KEY
 
 async function fetchHeadLines(max) {
     const params = {
